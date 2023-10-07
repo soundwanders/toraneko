@@ -1,30 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link.js';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
-import { IoIosSunny, IoIosMoon } from 'react-icons/io';
-import { getThemePreference, setThemePreference } from '../utils/theme.js';
+import ThemeSwitcher from "@/components/ThemeSwitcher";
 
-const Header = () => {
+const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(getThemePreference());
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-
-  // Toggle theme function
-  const toggleDarkMode = () => {
-    const newMode = !isDarkMode;
-    setIsDarkMode(newMode);
-    setThemePreference(newMode);
-  };
-
-  useEffect(() => {
-    const themePreference = getThemePreference();
-    setIsDarkMode(themePreference);
-  }, []);
 
   return (
     <header className="bg-rose-800 dark:bg-gray-800 p-4">
@@ -45,17 +31,7 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Theme Toggle Button */}
-        <div className="flex items-center">
-          <button
-            onClick={toggleDarkMode}
-            className="text-white hover:text-gray-200 focus:outline-none dark:text-gray-300"
-          >
-            {isDarkMode ? <IoIosMoon /> : <IoIosSunny />}
-          </button>
-        </div>
-
-        {/* Navbar Links (visible on desktop) */}
+        {/* Navbar Links */}
         <nav className="hidden md:flex space-x-4">
           <Link href="/404" className="text-white dark:text-gray-300">
             404
@@ -77,22 +53,27 @@ const Header = () => {
               Home
             </Link>
             <Link
+              href="https://yamabiko.vercel.app"
+              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-700`}
+            >
+              Blog
+            </Link>
+            <Link
               href="/404"
               className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-700`}
             >
               404
             </Link>
-            <Link
-              href="/blog"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-700`}
-            >
-              Blog
-            </Link>
           </nav>
         </div>
       )}
+      
+      {/* Theme Switcher */}
+      <div className="flex items-center justify-end">
+        <ThemeSwitcher />
+      </div>
     </header>
-  );
-}
+  )
+};
 
 export default Header;

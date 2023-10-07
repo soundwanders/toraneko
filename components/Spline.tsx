@@ -8,7 +8,7 @@ const MiniRoom = () => {
       className="spline"
       scene="https://prod.spline.design/akcFqsZFMTcrVJTi/scene.splinecode" 
     />
-  );
-}
+  )
+};
 
 export default MiniRoom;
