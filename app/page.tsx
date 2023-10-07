@@ -1,13 +1,16 @@
-// index.js
+// Home.tsx
 import React from 'react';
 import Hero from '@/components/Hero';
 import Header from '@/components/nav/Header';
 
-export default function Home() {
+const Home: React.FC = () => {
+
   return (
     <div>
       <Header /> 
       <Hero /> 
     </div>
-  )
+  );
 };
+
+export default Home;

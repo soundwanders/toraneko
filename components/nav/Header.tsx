@@ -23,13 +23,23 @@ const Header: React.FC = () => {
 
 
         {/* Navbar Links */}
-        <nav className="hidden md:flex space-x-6 items-center"> {/* Change `justify-end` to `items-center` */}
-          <Link href="/404" className="text-white dark:text-gray-300">
-            404
+        <nav className="hidden md:flex space-x-6 items-center font-bold"> 
+          <Link 
+            href="https://github.com/soundwanders" 
+            target="_blank" 
+            className="text-white dark:text-gray-300"
+          >
+            Github
           </Link>
-          <Link href="https://yamabiko.vercel.app" target="_blank" className="text-white dark:text-gray-300">
+
+          <Link 
+            href="https://yamabiko.vercel.app" 
+            target="_blank" 
+            className="text-white dark:text-gray-300"
+          >
             Blog
           </Link>
+          
           <ThemeSwitcher />
         </nav>
 
@@ -45,7 +55,7 @@ const Header: React.FC = () => {
       </div>
       {/* Sidebar (visible on mobile) */}
       {isSidebarOpen && (
-        <div className="md:hidden">
+        <div className="md:hidden font-bold">
           <nav className={`bg-rose-800 dark:bg-gray-800 p-6`}>
             <Link
               href="/"
@@ -53,24 +63,29 @@ const Header: React.FC = () => {
             >
               Home
             </Link>
+
+            <Link 
+              href="https://github.com/soundwanders" 
+              target="_blank" 
+              className="text-white dark:text-gray-300"
+            >
+              Github
+            </Link>
+            
             <Link
               href="https://yamabiko.vercel.app"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-700`}
+              target="_blank"
+              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-800`}
             >
               Blog
             </Link>
-            <Link
-              href="/404"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-700`}
-            >
-              404
-            </Link>
+
+            <ThemeSwitcher />
           </nav>
         </div>
       )}
-      
     </header>
-  )
+  );
 };
 
 export default Header;
