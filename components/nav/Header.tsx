@@ -21,6 +21,18 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
+
+        {/* Navbar Links */}
+        <nav className="hidden md:flex space-x-6 items-center"> {/* Change `justify-end` to `items-center` */}
+          <Link href="/404" className="text-white dark:text-gray-300">
+            404
+          </Link>
+          <Link href="https://yamabiko.vercel.app" target="_blank" className="text-white dark:text-gray-300">
+            Blog
+          </Link>
+          <ThemeSwitcher />
+        </nav>
+
         {/* Hamburger Icon (only visible on mobile) */}
         <div className="md:hidden">
           <button
@@ -30,22 +42,11 @@ const Header: React.FC = () => {
             {isSidebarOpen ? <RiCloseLine /> : <RiMenu3Line />}
           </button>
         </div>
-
-        {/* Navbar Links */}
-        <nav className="hidden md:flex space-x-4">
-          <Link href="/404" className="text-white dark:text-gray-300">
-            404
-          </Link>
-          <Link href="/blog" className="text-white dark:text-gray-300">
-            Blog
-          </Link>
-        </nav>
       </div>
-
       {/* Sidebar (visible on mobile) */}
       {isSidebarOpen && (
         <div className="md:hidden">
-          <nav className={`bg-rose-800 dark:bg-gray-800 p-4`}>
+          <nav className={`bg-rose-800 dark:bg-gray-800 p-6`}>
             <Link
               href="/"
               className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-800`}
@@ -68,10 +69,6 @@ const Header: React.FC = () => {
         </div>
       )}
       
-      {/* Theme Switcher */}
-      <div className="flex items-center justify-end">
-        <ThemeSwitcher />
-      </div>
     </header>
   )
 };

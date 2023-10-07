@@ -2,7 +2,7 @@
 
 import Spline from '@splinetool/react-spline';
 
-const MiniRoom = () => {
+const MiniRoom: React.FC = () => {
   return (
     <Spline 
       className="spline"
