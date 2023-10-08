@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-rose-800 dark:bg-gray-800 p-4">
+    <header className="bg-gray-700 dark:bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
         <div className="text-white font-bold text-lg">
           <Link href="/" className="text-white dark:text-gray-300 p-4">
@@ -56,10 +56,10 @@ const Header: React.FC = () => {
       {/* Sidebar (visible on mobile) */}
       {isSidebarOpen && (
         <div className="md:hidden font-bold">
-          <nav className={`bg-rose-800 dark:bg-gray-800 p-6`}>
+          <nav className={`bg-gray-700 dark:bg-gray-800 p-6`}>
             <Link
               href="/"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-800`}
+              className={`text-white dark:text-gray-300 block py-2 hover:bg-slate-600`}
             >
               Home
             </Link>
@@ -67,7 +67,7 @@ const Header: React.FC = () => {
             <Link 
               href="https://github.com/soundwanders" 
               target="_blank" 
-              className="text-white dark:text-gray-300"
+              className="text-white dark:text-gray-300 block py-2 hover:bg-slate-600"
             >
               Github
             </Link>
@@ -75,7 +75,7 @@ const Header: React.FC = () => {
             <Link
               href="https://yamabiko.vercel.app"
               target="_blank"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-blue-800`}
+              className={`text-white dark:text-gray-300 block py-2 hover:bg-slate-600`}
             >
               Blog
             </Link>

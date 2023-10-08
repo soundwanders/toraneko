@@ -17,11 +17,11 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="hero-container flex flex-wrap h-full md:h-screen" style={containerStyle}>
+    <div className="hero-container flex flex-wrap md:h-screen" style={containerStyle}>
       {/* Text/Content Section */}
       <div className="w-full md:w-2/5 p-4 flex items-center">
         <div className="max-w-lg mx-auto md:-translate-y-36">
-          <h1 className="text-2xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-gray-200 whitespace-nowrap">
+          <h1 className="text-4xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-gray-200 whitespace-nowrap">
             <span className="text-violet-400">
               sound
             </span>
@@ -29,10 +29,8 @@ const Hero: React.FC = () => {
               wanders
             </span>
           </h1>
-          <p className="text-md md:text-lg dark:text-gray-100 md:px-2">
-            <span className="text-slate-300 dark:text-gray-100">
-              Tabby cats and tiger paws make the world go round
-            </span>
+          <p className="text-md md:text-lg text-slate-300 dark:text-gray-100md:px-2">
+            Tabby cats and tiger paws make the world go round
             <span className="text-3xl px-2">🐯</span>
           </p>
         </div>

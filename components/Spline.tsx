@@ -5,7 +5,7 @@ import SplineImage from './SplineImage';
 const SplineImagePlaceholder: React.FC = () => (
   <div className="w-full md:w-1/2 relative p-8 mt-4 md:translate-x-1/4">
     <SplineImage
-      src="/mini-room.png"
+      src="/miniroom.png"
       alt="If you're reading this it's too late 😿"
       width={608}
       height={342}
@@ -16,11 +16,17 @@ const SplineImagePlaceholder: React.FC = () => (
 const SplineComponent: React.FC<{ handleSplineLoaded: () => void }> = ({
   handleSplineLoaded,
 }) => (
-  <div className="flex-initial w-3/4 md:w-7/12 relative md:mt-12 md:-translate-x-16 mx-auto ">
-    <Spline
+  <div className="w-3/4 md:w-7/12 relative md:mt-12 md:-translate-x-16 mx-auto">
+    {/* <Spline
       className="spline"
       onLoad={handleSplineLoaded}
       scene="https://prod.spline.design/akcFqsZFMTcrVJTi/scene.splinecode"
+    />  */}
+
+    <Spline 
+      className="spline"
+      onLoad={handleSplineLoaded}
+      scene="https://prod.spline.design/atF7uaWZxoZX0Txx/scene.splinecode"
     />
   </div>
 );
@@ -41,20 +47,17 @@ const MiniRoom: React.FC = () => {
       startTransition(() => {
         setLoading(false);
       });
-    }, 1000);
-
+    }, 500);
     return () => clearTimeout(timeout);
   }, []);
 
   return (
     <>
-      <Suspense fallback={<SplineImagePlaceholder />}>
-        {loading ? (
-          <SplineImagePlaceholder />
-        ) : (
-          <SplineComponent handleSplineLoaded={handleSplineLoaded} />
-        )}
-      </Suspense>
+      {loading ? (
+        <SplineImagePlaceholder />
+      ) : (
+        <SplineComponent handleSplineLoaded={handleSplineLoaded} />
+      )}
     </>
   );
 };
