@@ -20,16 +20,24 @@ const Hero: React.FC = () => {
     <div className="hero-container flex flex-wrap h-full md:h-screen" style={containerStyle}>
       {/* Text/Content Section */}
       <div className="w-full md:w-2/5 p-4 flex items-center">
-        <div className="max-w-lg mx-auto md:-translate-y-28">
+        <div className="max-w-lg mx-auto md:-translate-y-36">
           <h1 className="text-2xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-gray-200 whitespace-nowrap">
-            soundwanders
+            <span className="text-violet-400">
+              sound
+            </span>
+            <span className="text-salmon-400">
+              wanders
+            </span>
           </h1>
-          <p className="text-md md:text-lg text-gray-300 dark:text-gray-100 md:px-2">
-            Tabby cats and tiger paws make the world go round. 
+          <p className="text-md md:text-lg dark:text-gray-100 md:px-2">
+            <span className="text-slate-300 dark:text-gray-100">
+              Tabby cats and tiger paws make the world go round
+            </span>
             <span className="text-3xl px-2">🐯</span>
           </p>
         </div>
       </div>
+
       {/* MiniRoom Scene Section */}
       <MiniRoom />
     </div>

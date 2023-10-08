@@ -7,8 +7,17 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
-  theme: {},
+  theme: {
+    extend: {
+      colors: { 
+        salmon: { 
+          300: "#fdc4b5",
+          400: "#faa78b"
+        },
+      },
+    },
+  },
   plugins: [],
-}
+};
 
 export default config;
