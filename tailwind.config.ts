@@ -14,6 +14,9 @@ const config: Config = {
           300: "#fdc4b5",
           400: "#faa78b"
         },
+        splinePink: {
+          300: "#f3a8ba",
+        }
       },
     },
   },

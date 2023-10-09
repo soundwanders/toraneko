@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
             <span className="text-violet-400">
               sound
             </span>
-            <span className="text-salmon-400">
+            <span className="text-splinePink-300">
               wanders
             </span>
           </h1>
@@ -36,13 +36,13 @@ const Hero: React.FC = () => {
             <span className="text-xl px-2">🐯</span>
           </p>
 
-          <nav className="flex space-x-6 items-center font-bold mt-4 md:px-1"> 
+          <nav className="flex space-x-6 items-center font-bold text-lg text-slate-800 dark:text-gray-300 mt-4 md:px-1"> 
             <Link 
               href="https://github.com/soundwanders" 
               target="_blank" 
-              className="text-slate-800 dark:text-gray-300 text-lg font-bold mr-4"
+              className="mr-4"
             >
-              <span className="inline-block mr-2 github-logo">
+              <span className="github-logo inline-block mr-2">
                 <FiGithub size={24} />
               </span>
               Github
@@ -51,9 +51,9 @@ const Hero: React.FC = () => {
             <Link 
               href="https://yamabiko.vercel.app" 
               target="_blank" 
-              className="text-slate-800 dark:text-gray-300 text-lg font-bold"
+              className=""
             >
-              <span className="inline-block mr-2 blog-logo -mb-1">
+              <span className="blog-logo inline-block mr-2 -mb-1">
                 <FiCoffee size={24} />
               </span>
               Blog

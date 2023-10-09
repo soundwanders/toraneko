@@ -39,7 +39,7 @@ const SplineComponent: React.FC<{ handleSplineLoaded: () => void }> = ({
     <Spline
       className="spline"
       onLoad={handleSplineLoaded}
-      scene="https://prod.spline.design/atF7uaWZxoZX0Txx/scene.splinecode"
+      scene="https://prod.spline.design/5M5aIcBumjTLmljz/scene.splinecode"
     />
   </div>
 );
