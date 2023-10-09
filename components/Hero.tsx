@@ -2,7 +2,9 @@
 
 import React from 'react';
 import MiniRoom from './Spline';
+import Link from 'next/link';
 import { useTheme } from 'next-themes';
+import { FiGithub, FiCoffee } from 'react-icons/fi';
 
 const Hero: React.FC = () => {
   const { theme } = useTheme();
@@ -17,11 +19,11 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <div className="hero-container flex flex-wrap md:h-screen" style={containerStyle}>
+    <div className="hero-container flex flex-wrap h-screen" style={containerStyle}>
       {/* Text/Content Section */}
-      <div className="w-full md:w-2/5 p-4 flex items-center">
+      <div className="w-full md:w-2/5 px-8 md:p-4 flex items-center">
         <div className="max-w-lg mx-auto md:-translate-y-36">
-          <h1 className="text-4xl md:text-8xl font-bold mb-4 text-gray-900 dark:text-gray-200 whitespace-nowrap">
+          <h1 className="text-4xl md:text-8xl font-bold mb-4 whitespace-nowrap">
             <span className="text-violet-400">
               sound
             </span>
@@ -29,10 +31,34 @@ const Hero: React.FC = () => {
               wanders
             </span>
           </h1>
-          <p className="text-md md:text-lg text-slate-300 dark:text-gray-100md:px-2">
-            Tabby cats and tiger paws make the world go round
-            <span className="text-3xl px-2">🐯</span>
+          <p className="text-sm md:text-lg text-slate-800 dark:text-gray-100 md:px-1">
+            #1 Fan of Chubby Tabby Cats and Fuzzy Tiger Paws
+            <span className="text-xl px-2">🐯</span>
           </p>
+
+          <nav className="flex space-x-6 items-center font-bold mt-4 md:px-1"> 
+            <Link 
+              href="https://github.com/soundwanders" 
+              target="_blank" 
+              className="text-slate-800 dark:text-gray-300 text-lg font-bold mr-4"
+            >
+              <span className="inline-block mr-2 github-logo">
+                <FiGithub size={24} />
+              </span>
+              Github
+            </Link>
+
+            <Link 
+              href="https://yamabiko.vercel.app" 
+              target="_blank" 
+              className="text-slate-800 dark:text-gray-300 text-lg font-bold"
+            >
+              <span className="inline-block mr-2 blog-logo -mb-1">
+                <FiCoffee size={24} />
+              </span>
+              Blog
+            </Link>
+          </nav>
         </div>
       </div>
 

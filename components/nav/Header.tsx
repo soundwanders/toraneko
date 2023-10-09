@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link.js';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
 import ThemeSwitcher from "@/components/ThemeSwitcher";
+import { FiGithub, FiCoffee } from 'react-icons/fi';
 
 const Header: React.FC = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -22,24 +23,8 @@ const Header: React.FC = () => {
         </div>
 
 
-        {/* Navbar Links */}
+        {/* Theme Switcher Button */}
         <nav className="hidden md:flex space-x-6 items-center font-bold"> 
-          <Link 
-            href="https://github.com/soundwanders" 
-            target="_blank" 
-            className="text-white dark:text-gray-300"
-          >
-            Github
-          </Link>
-
-          <Link 
-            href="https://yamabiko.vercel.app" 
-            target="_blank" 
-            className="text-white dark:text-gray-300"
-          >
-            Blog
-          </Link>
-          
           <ThemeSwitcher />
         </nav>
 
@@ -57,30 +42,31 @@ const Header: React.FC = () => {
       {isSidebarOpen && (
         <div className="md:hidden font-bold">
           <nav className={`bg-gray-700 dark:bg-gray-800 p-6`}>
-            <Link
-              href="/"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-slate-600`}
-            >
-              Home
-            </Link>
-
             <Link 
               href="https://github.com/soundwanders" 
               target="_blank" 
-              className="text-white dark:text-gray-300 block py-2 hover:bg-slate-600"
+              className="text-white dark:text-gray-300 text-lg font-bold mr-6"
             >
+              <span className="github-logo inline-block mr-2">
+                <FiGithub size={24} />
+              </span>
               Github
             </Link>
-            
-            <Link
-              href="https://yamabiko.vercel.app"
-              target="_blank"
-              className={`text-white dark:text-gray-300 block py-2 hover:bg-slate-600`}
+
+            <Link 
+              href="https://yamabiko.vercel.app" 
+              target="_blank" 
+              className="text-white dark:text-gray-300 text-lg font-bold"
             >
+              <span className="blog-logo inline-block mr-2 -mb-1">
+                <FiCoffee size={24} />
+              </span>
               Blog
             </Link>
 
-            <ThemeSwitcher />
+            <span className="inline-block ml-6">
+              <ThemeSwitcher/>
+            </span>
           </nav>
         </div>
       )}
