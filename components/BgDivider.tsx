@@ -1,10 +1,8 @@
 "use client";
 
-import React from "react";
-
-// BgDivider.tsx
+// Make the theme prop optional to avoid potential errors
 interface BgDividerProps {
-  theme?: string; // Make the theme prop optional
+  theme?: string;
 }
 
 export const BgDivider: React.FC<BgDividerProps> = ({ theme }) => {

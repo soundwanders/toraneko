@@ -1,25 +1,7 @@
 import React, { Suspense, useState, useEffect, startTransition } from 'react';
 import Spline from '@splinetool/react-spline';
 import SplineImage from './SplineImage';
-
-const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 640); // Adjust the breakpoint as needed
-    };
-
-    window.addEventListener('resize', handleResize);
-    handleResize(); // Initialize the state
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  return isMobile;
-};
+import { useIsMobile } from '@/hooks/useIsMobile';
 
 const SplineImagePlaceholder: React.FC = () => (
   <div className="w-full md:w-1/2 relative p-8 -mt-4 md:mt-16 md:translate-x-1/4">
@@ -69,12 +51,8 @@ const MiniRoom: React.FC = () => {
       {isMobile ? (
         <SplineImagePlaceholder />
       ) : (
-        <Suspense fallback={null}>
-          {loading ? (
-            <SplineImagePlaceholder />
-          ) : (
-            <SplineComponent handleSplineLoaded={handleSplineLoaded} />
-          )}
+        <Suspense fallback={<>SplineImagePlaceholder</>}>
+          <SplineComponent handleSplineLoaded={handleSplineLoaded} />
         </Suspense>
       )}
     </>

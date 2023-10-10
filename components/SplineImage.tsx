@@ -1,4 +1,3 @@
-import React from 'react';
 import NextImage, { ImageProps } from 'next/image';
 
 interface SplineImageProps extends ImageProps {
