@@ -18,7 +18,7 @@ export default function RootLayout({children,} : { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={outfit.className}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem >   
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem >   
             {children}
         </ThemeProvider>
       </body>
