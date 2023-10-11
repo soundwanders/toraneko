@@ -5,7 +5,7 @@ import { FiGithub, FiCoffee } from 'react-icons/fi';
 
 export const HeroLinks: React.FC = () => {
   return (
-    <nav className="flex space-x-6 items-center font-bold text-lg text-slate-800 dark:text-gray-300 mt-4 md:px-1"> 
+    <nav className="flex space-x-6 items-center font-bold text-lg text-slate-800 dark:text-gray-300 mt-8 md:mt-4 md:px-1"> 
       <Link 
         href="https://github.com/soundwanders" 
         target="_blank" 
