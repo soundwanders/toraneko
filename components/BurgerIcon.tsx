@@ -4,7 +4,7 @@ const BurgerIcon: React.FC = () => {
   return (
     <span className="burger-icon inline-block">
       <img
-        src="/burger2.png"
+        src="/burger.png"
         alt="Burger Icon"
         width={15}
         height={15}
