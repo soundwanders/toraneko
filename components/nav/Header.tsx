@@ -22,7 +22,6 @@ const Header: React.FC = () => {
           </Link>
         </div>
 
-
         {/* Theme Switcher Button */}
         <nav className="hidden md:flex space-x-6 items-center font-bold"> 
           <ThemeSwitcher />

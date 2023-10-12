@@ -1,10 +1,12 @@
+"use client";
+
 import React, { Suspense } from 'react';
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 import SplineImage from './SplineImage';
 import { useIsMobile } from '@/hooks/useIsMobile';
 
 const SplineImagePlaceholder: React.FC = () => (
-  <div className="w-full md:w-1/2 relative p-8 -mt-4 md:mt-16 md:translate-x-1/4">
+  <div className="w-full md:w-1/2 h-auto relative p-8 -mt-4 md:mt-16 md:translate-x-1/4">
     <SplineImage
       src="/miniroom.png"
       alt="If you're reading this it's too late for ear scratches 😿"
