@@ -6,11 +6,13 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "prettier": "prettier --write \"**/*.js\"",
+    "prettier-tailwind": "prettier-plugin-tailwindcss --write \"**/*.html\""
   },
   "dependencies": {
     "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^0.9.470",
+    "@splinetool/runtime": "^0.9.480",
     "next": "13.5.4",
     "next-themes": "^0.2.1",
     "react": "^18",
@@ -27,6 +29,8 @@
     "eslint": "^8.51.0",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.5",
     "tailwindcss": "^3",
     "typescript": "^5.2.2"
   }
