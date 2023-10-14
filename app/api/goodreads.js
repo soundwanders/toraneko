@@ -4,7 +4,13 @@ export default async function handler(req, res) {
   try {
     const rssFeedURL =
       'https://www.goodreads.com/review/list_rss/160520358?shelf=currently-reading';
+
+      
+    console.log('API route is fetching data from URL:', rssFeedURL);
+
+
     const response = await fetch(rssFeedURL);
+    console.log(response);
 
     if (!response.ok) {
       console.error(
@@ -15,6 +21,9 @@ export default async function handler(req, res) {
     }
 
     const xml = await response.text();
+
+    console.log(xml);
+
     res.setHeader('Content-Type', 'application/xml');
     res.status(200).send(xml);
   } catch (error) {

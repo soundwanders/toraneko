@@ -13,6 +13,8 @@ const CurrentlyReading = () => {
 
     const parser = new Parser();
 
+    console.log(rssFeedURL);
+
     parser.parseURL(rssFeedURL, (err, feed) => {
       if (err) {
         console.error('Error parsing RSS feed:', err);
