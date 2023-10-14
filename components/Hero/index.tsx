@@ -1,4 +1,5 @@
 "use client";
+
 import React from 'react';
 import MiniRoom from '../Spline';
 import HeroLinks from '../nav/HeroLinks';

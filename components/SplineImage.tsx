@@ -5,15 +5,17 @@ interface SplineImageProps extends ImageProps {
   alt: string;
   width: number;
   height: number;
+  quality: number;
 }
 
-const SplineImage: React.FC<SplineImageProps> = ({ src, alt, width, height }) => {
+const SplineImage: React.FC<SplineImageProps> = ({ src, alt, width, height, quality }) => {
   return (
     <NextImage
       src={src}
       alt={alt}
       width={width}
       height={height}
+      quality={quality}
     />
   );
 };

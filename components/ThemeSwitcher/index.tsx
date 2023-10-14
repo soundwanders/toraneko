@@ -18,7 +18,7 @@ const ThemeSwitcher: React.FC = () => {
     transition-transform duration-500 ease-in-out`;
 
   return (
-    <div className="relative w-12 h-6 rounded-full px-1 cursor-pointer bg-slate-300 dark:bg-slate-600 hover:opacity-90" onClick={toggleTheme}>
+    <div className="relative w-12 h-6 rounded-full px-1 cursor-pointer bg-slate-600 hover:opacity-90" onClick={toggleTheme}>
       <button className={switchClasses}>
         <IconContext.Provider value={{ color: theme === 'light' ? '#6A5ACD' : '#483D8B', className: "theme-button" }}>
           {isActive ? <HiOutlineSun size={18} /> : <HiOutlineMoon size={18} />}

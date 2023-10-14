@@ -3,15 +3,15 @@
 import React, { Suspense } from 'react';
 const Spline = React.lazy(() => import('@splinetool/react-spline'));
 import SplineImage from './SplineImage';
-import { useIsMobile } from '@/hooks/useIsMobile';
 
 const SplineImagePlaceholder: React.FC = () => (
-  <div className="w-full md:w-1/2 h-auto relative p-8 -mt-4 md:mt-16 md:translate-x-1/4">
+  <div className="w-full md:w-1/2 h-auto relative p-8 -mt-6 md:mt-14 md:ml-36 slide-up-and-fade">
     <SplineImage
       src="/miniroom.png"
       alt="If you're reading this it's too late for ear scratches 😿"
       width={608}
       height={342}
+      quality={90}
     />
   </div>
 );
@@ -26,19 +26,25 @@ const SplineComponent: React.FC = () => (
 );
 
 const MiniRoom: React.FC = () => {
-  const isMobile = useIsMobile();
-
   return (
-    <>
-      {isMobile ? (
-        <SplineImagePlaceholder />
-      ) : (
-        <Suspense fallback={<SplineImagePlaceholder/>}>
-          <SplineComponent />
-        </Suspense>
-      )}
-    </>
-  );
+    <Suspense fallback={null}>
+      <SplineImagePlaceholder />
+    </Suspense>
+  )
+
+  // commented out until we can figure out how to speed up our spline scene loading
+
+  // return (
+  //   <>
+  //     {isMobile ? (
+  //       <SplineImagePlaceholder />
+  //     ) : (
+  //       <Suspense fallback={null}>
+  //         <SplineComponent />
+  //       </Suspense>
+  //     )}
+  //   </>
+  // );
 };
 
 export default MiniRoom;

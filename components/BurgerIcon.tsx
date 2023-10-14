@@ -1,3 +1,5 @@
+"use client";
+
 import React from 'react';
 
 const BurgerIcon: React.FC = () => {
@@ -6,8 +8,8 @@ const BurgerIcon: React.FC = () => {
       <img
         src="/burger.png"
         alt="Burger Icon"
-        width={15}
-        height={15}
+        width={18}
+        height={18}
       />
     </span>
   );

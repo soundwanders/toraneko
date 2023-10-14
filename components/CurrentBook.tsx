@@ -1,5 +1,3 @@
-// ./components/CurrentlyReading.tsx
-
 "use client";
 
 import React, { useState, useEffect } from 'react';
@@ -16,20 +14,33 @@ const CurrentlyReading = () => {
     const parser = new Parser();
 
     parser.parseURL(rssFeedURL, (err, feed) => {
-      if (!err && feed.items.length > 0) {
-        // Get the first item (currently reading book)
-        const item = feed.items[0];
-       
-        // Extract the book title and Goodreads link
-        const bookTitleMatch = /<title>(.*?)<\/title>/i.exec(item.content ?? '');
-        const goodreadsLinkMatch = /<link>(.*?)<\/link>/i.exec(item.content ?? '');
+      if (err) {
+        console.error('Error parsing RSS feed:', err);
+      } else {
+        console.log('Feed items:', feed.items);
 
-        if (bookTitleMatch && goodreadsLinkMatch) {
-          const extractedBookTitle = bookTitleMatch[1];
-          const extractedGoodreadsLink = goodreadsLinkMatch[1];
+        if (feed.items.length > 0) {
+          // Get the first item (currently reading book)
+          const item = feed.items[0];
 
-          setBookTitle(extractedBookTitle);
-          setGoodreadsLink(extractedGoodreadsLink);
+          // Extract the book title and Goodreads link
+          const bookTitleMatch = /<title>(.*?)<\/title>/i.exec(item.content ?? '');
+          const goodreadsLinkMatch = /<link>(.*?)<\/link>/i.exec(item.content ?? '');
+
+          if (bookTitleMatch && goodreadsLinkMatch) {
+            const extractedBookTitle = bookTitleMatch[1];
+            const extractedGoodreadsLink = goodreadsLinkMatch[1];
+
+            console.log('Extracted Book Title:', extractedBookTitle);
+            console.log('Extracted Goodreads Link:', extractedGoodreadsLink);
+
+            setBookTitle(extractedBookTitle);
+            setGoodreadsLink(extractedGoodreadsLink);
+          } else {
+            console.error('Failed to extract book title or Goodreads link.');
+          }
+        } else {
+          console.warn('No items found in the feed.');
         }
       }
     });
@@ -37,14 +48,16 @@ const CurrentlyReading = () => {
 
   return (
     <>
-      {bookTitle && goodreadsLink && (
-        <p>
+      {bookTitle && goodreadsLink ? (
+        <p className="text-sm md:text-lg text-gray-700 dark:text-gray-300 md:px-1 mt-4 px-1">
           I'm currently reading{' '}
           <a href={goodreadsLink} target="_blank" rel="noopener noreferrer">
             {bookTitle}
           </a>
           .
         </p>
+      ) : (
+        <p className="px-1">x_x</p>
       )}
     </>
   );
