@@ -1,7 +1,7 @@
 "use client";
 
 import BurgerIcon from "../BurgerIcon";
-import CurrentlyReading from "../CurrentBook";
+import CurrentlyReading from "../CurrentlyReading";
 
 const Subtitle: React.FC = () => {
   return (

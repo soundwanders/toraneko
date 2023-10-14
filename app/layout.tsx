@@ -11,7 +11,7 @@ const outfit = Outfit({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
   title: 'soundwanders ᓚᘏᗢ',
-  description: 'Tabby cats and tiger paws',
+  description: 'Drifting through the digital constellations of web design and development.',
 };
 
 export default function RootLayout({children,} : { children: React.ReactNode }) {

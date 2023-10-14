@@ -8,8 +8,8 @@ const BurgerIcon: React.FC = () => {
       <img
         src="/burger.png"
         alt="Burger Icon"
-        width={18}
-        height={18}
+        width={16}
+        height={16}
       />
     </span>
   );

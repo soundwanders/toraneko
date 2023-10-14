@@ -17,7 +17,7 @@ const SplineImagePlaceholder: React.FC = () => (
 );
 
 const SplineComponent: React.FC = () => (
-  <div className={`w-3/4 md:w-7/12 relative md:mt-12 md:-translate-x-16 mx-auto hide-on-mobile`}>
+  <div className={`w-3/4 md:w-7/12 relative md:mt-12 md:-translate-x-12 mx-auto hide-on-mobile`}>
     <Spline
       className="spline"
       scene="https://prod.spline.design/5M5aIcBumjTLmljz/scene.splinecode"
