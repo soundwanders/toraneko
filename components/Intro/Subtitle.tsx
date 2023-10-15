@@ -1,7 +1,6 @@
 "use client";
 
 import BurgerIcon from "../BurgerIcon";
-import CurrentlyReading from "../CurrentlyReading";
 
 const Subtitle: React.FC = () => {
   return (
@@ -19,12 +18,10 @@ const Subtitle: React.FC = () => {
           &nbsp;artistry in every byte
         </span>
 
-        <span className="text-sm px-1">
+        <span className="text-sm px-2">
           <BurgerIcon />
         </span>
       </p>
-      
-      <CurrentlyReading />
     </>
   );
 };

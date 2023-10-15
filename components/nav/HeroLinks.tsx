@@ -1,32 +1,33 @@
 "use client";
 
-import Link from "next/link";
 import { FiGithub, FiCoffee } from 'react-icons/fi';
 
 export const HeroLinks: React.FC = () => {
   return (
-    <nav className="flex space-x-6 items-center font-bold text-lg text-slate-800 dark:text-gray-300 mt-8 md:mt-4 md:px-1"> 
-      <Link 
-        href="https://github.com/soundwanders" 
-        target="_blank" 
-        className="hero-link mr-4 hover:underline" 
+    <nav className="flex space-x-6 items-center font-bold text-base text-slate-800 dark:text-gray-300 mt-8 md:mt-4 md:px-1"> 
+      <a
+        href="https://github.com/soundwanders"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hero-link mr-2 hover:underline"
       >
         <span className="github-logo inline-block mr-2">
-          <FiGithub size={24} />
+          <FiGithub size={20} />
         </span>
         Github
-      </Link>
+      </a>
 
-      <Link 
-        href="https://yamabiko.vercel.app" 
-        target="_blank" 
-        className="hero-link hover:underline"
+      <a
+        href="https://yamabiko.vercel.app"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hero-link mr-4 hover:underline"
       >
         <span className="blog-logo inline-block mr-2 -mb-1">
-          <FiCoffee size={24} />
+          <FiCoffee size={20} />
         </span>
         Blog
-      </Link>
+      </a>
     </nav>
   );
 };

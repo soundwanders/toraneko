@@ -14,8 +14,8 @@ const ThemeSwitcher: React.FC = () => {
   const isActive = theme === "light";
 
   const switchClasses = `flex items-center justify-center w-6 h-6 text-dark bg-gray-100 rounded-full transform 
-    ${isActive ? 'translate-x-0' : 'translate-x-6'} 
-    transition-transform duration-500 ease-in-out`;
+    transition-transform duration-500 ease-in-out
+    ${isActive ? 'translate-x-0' : 'translate-x-6'}`;
 
   return (
     <div className="relative w-12 h-6 rounded-full px-1 cursor-pointer bg-slate-600 hover:opacity-90" onClick={toggleTheme}>
