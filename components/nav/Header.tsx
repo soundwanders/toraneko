@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 
   return (
     <header className="bg-gray-200 dark:bg-slate-875 p-4">
-      <div className="container-xl mx-auto flex justify-between items-center px-24">
+      <div className="container-xl mx-auto flex justify-between items-center md:px-24">
         <div className="text-gray-700 dark:text-gray-100 font-bold py-1">
           <Link href="/" className="hover:opacity-90">
             <BiGhost size={24} />

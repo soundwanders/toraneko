@@ -39,7 +39,7 @@ const CurrentlyReading = () => {
   const formattedBookTitle = bookTitle ? bookTitle.replace(/\s+/g, '+') : '';
 
   return (
-    <div>
+    <>
       {error ? (
         <p className="text-red-500">{error}</p>
       ) : (
@@ -61,7 +61,7 @@ const CurrentlyReading = () => {
           </p>
         )
       )}
-    </div>
+    </>
   );
 };
 

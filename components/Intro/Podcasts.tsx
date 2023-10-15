@@ -25,11 +25,11 @@ const Podcasts = () => {
   ];
 
   return (
-    <div>
-      <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 md:px-1 mt-2 mb-2 px-1">
+    <>
+      <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 px-1 md:px-2 mt-2 mb-2">
         <span className="pr-1">🎙️</span> Some of my favorite podcasts...
       </p>
-      <ul className="list-disc pl-4">
+      <ul className="list-disc pl-5 md:pl-6">
         {podcasts.map((podcast, index) => (
           <li key={index} className={`text-sm ${podcast.color} mt-1`}>
             <a
@@ -43,7 +43,7 @@ const Podcasts = () => {
           </li>
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
