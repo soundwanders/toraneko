@@ -5,6 +5,9 @@ import MiniRoom from '../Spline';
 import HeroLinks from '../nav/HeroLinks';
 import Title from '../Intro/Title';
 import Subtitle from '../Intro/Subtitle';
+import CurrentlyReading from "../Intro/CurrentlyReading";
+import Podcasts from "../Intro/Podcasts";
+
 import { useTheme } from 'next-themes';
 
 const Hero: React.FC = () => {
@@ -27,6 +30,8 @@ const Hero: React.FC = () => {
           <Title />
           <Subtitle />
           <HeroLinks />
+          <CurrentlyReading />
+          <Podcasts />
         </div>
       </div>
 
