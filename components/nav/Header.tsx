@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link.js';
 import { RiMenu3Line, RiCloseLine } from 'react-icons/ri';
+import { BiGhost } from 'react-icons/bi';
 import Sidebar from './Sidebar';
 import ThemeSwitcher from "@/components/ThemeSwitcher";
 
@@ -14,11 +15,11 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-gray-300 dark:bg-slate-875 p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="text-gray-800 dark:text-gray-100 font-bold text-lg">
-          <Link href="/" className="p-4 hover:opacity-90 ">
-            Home
+    <header className="bg-gray-200 dark:bg-slate-875 p-4">
+      <div className="container-xl mx-auto flex justify-between items-center px-24">
+        <div className="text-gray-700 dark:text-gray-100 font-bold py-1">
+          <Link href="/" className="hover:opacity-90">
+            <BiGhost size={24} />
           </Link>
         </div>
 
