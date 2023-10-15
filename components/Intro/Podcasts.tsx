@@ -9,17 +9,17 @@ const Podcasts = () => {
   const podcasts = [
     {
       name: 'The History of Rome',
-      spotifyURL: 'https://open.spotify.com/show/5bkGzRnrMJ2HxHWaU2j7ND',
+      spotifyURL: 'https://open.spotify.com/show/6wiEd40oPbQ9UK1rSpIy8I',
       color: theme === 'light' ? 'text-red-600' : 'text-red-300',
     },
     {
       name: 'Fall of Civilizations',
-      spotifyURL: 'https://open.spotify.com/show/3FpX92jKp3Bb2Wfa2cgO0U',
+      spotifyURL: 'https://open.spotify.com/show/44DE64rRpX1cFIQUlqQtvi',
       color: theme === 'light' ? 'text-blue-600' : 'text-blue-300',
     },
     {
-      name: 'Casefiles Presents',
-      spotifyURL: 'https://open.spotify.com/show/4jR3GsT1pAwJnZp6mFSDNc',
+      name: 'Casefile',
+      spotifyURL: 'https://open.spotify.com/show/4V3K3zyD0k789eaSWFXzhc',
       color: theme === 'light' ? 'text-emerald-600' : 'text-green-300',
     }
   ];
