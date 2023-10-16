@@ -25,7 +25,7 @@ const Hero: React.FC = () => {
   return (
     <div className="hero-container flex flex-wrap h-screen" style={containerStyle}>
       {/* Text/Content Section */}
-      <div className="w-full md:w-2/5 px-8 md:p-4 flex items-center slide-up-and-fade">
+      <div className="w-full md:w-2/5 px-8 md:px-28 md:py-4 flex items-center slide-up-and-fade">
         <div className="max-w-xl mx-auto md:-translate-y-36">
           <Title />
           <Subtitle />

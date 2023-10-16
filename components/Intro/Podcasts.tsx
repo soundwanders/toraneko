@@ -26,7 +26,7 @@ const Podcasts = () => {
 
   return (
     <>
-      <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 px-1 md:px-2 mt-2 mb-2">
+      <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 px-1 md:px-2 mb-2">
         <span className="pr-1">🎙️</span> Some of my favorite podcasts...
       </p>
       <ul className="list-disc pl-5 md:pl-6">
