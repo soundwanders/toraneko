@@ -33,6 +33,8 @@ const Header: React.FC = () => {
           <button
             onClick={toggleSidebar}
             className="text-gray-800 dark:text-gray-100 focus:outline-none"
+            aria-describedby="Hamburger button that toggles the sidebar"
+            aria-label="toggle sidebar"
           >
             {isSidebarOpen ? <RiCloseLine size={24} /> : <RiMenu3Line size={18} />}
           </button>

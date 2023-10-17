@@ -19,7 +19,11 @@ const ThemeSwitcher: React.FC = () => {
 
   return (
     <div className="relative w-12 h-6 rounded-full px-1 cursor-pointer bg-slate-600 hover:opacity-90" onClick={toggleTheme}>
-      <button className={switchClasses}>
+      <button 
+        className={switchClasses}
+        aria-label="toggle theme"
+        aria-describedby="switch between light and dark theme"
+      >
         <IconContext.Provider value={{ color: theme === 'light' ? '#39306F' : '#483D8B', className: "theme-button" }}>
           {isActive ? <HiOutlineSun size={18} /> : <HiOutlineMoon size={18} />}
         </IconContext.Provider>

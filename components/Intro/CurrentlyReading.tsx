@@ -7,8 +7,8 @@ const CurrentlyReading = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Fetch data from your API route on the server-side
-    fetch('/api/goodreads') // This route should return the RSS feed XML
+    // Fetch data from goodreads API route
+    fetch('/api/goodreads')
       .then((response) => response.text())
       .then((xml) => {
         // Handle parsing of the received XML data
