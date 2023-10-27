@@ -18,8 +18,8 @@ const Podcasts = () => {
       color: theme === 'light' ? 'text-blue-600' : 'text-blue-300',
     },
     {
-      name: 'Casefile',
-      spotifyURL: 'https://open.spotify.com/show/4V3K3zyD0k789eaSWFXzhc',
+      name: 'Syntax',
+      spotifyURL: 'https://open.spotify.com/show/4kYCRYJ3yK5DQbP5tbfZby',
       color: theme === 'light' ? 'text-emerald-600' : 'text-green-300',
     }
   ];

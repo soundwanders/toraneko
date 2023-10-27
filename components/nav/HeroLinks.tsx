@@ -18,7 +18,7 @@ export const HeroLinks: React.FC = () => {
       </a>
 
       <a
-        href="https://yamabiko.vercel.app"
+        href="https://jcoletta.com"
         target="_blank"
         rel="noopener noreferrer"
         className="hero-link mr-4 hover:underline"

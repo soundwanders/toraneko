@@ -1,6 +1,6 @@
 "use client";
 
-import BurgerIcon from "../BurgerIcon";
+import CookieIcon from "../CookieIcon";
 
 const Subtitle: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const Subtitle: React.FC = () => {
         </span>
 
         <span className="text-sm px-2">
-          <BurgerIcon />
+          <CookieIcon />
         </span>
       </p>
     </>
