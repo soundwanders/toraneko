@@ -20,6 +20,7 @@ const Header: React.FC = () => {
         <div className="text-gray-700 dark:text-gray-100 font-bold py-1">
           <Link href="/" className="hover:opacity-90">
             <BiGhost size={24} />
+            <span className="sr-only">Home</span>
           </Link>
         </div>
 
@@ -33,10 +34,11 @@ const Header: React.FC = () => {
           <button
             onClick={toggleSidebar}
             className="text-gray-800 dark:text-gray-100 focus:outline-none"
-            aria-describedby="Hamburger button that toggles the sidebar"
+            aria-describedby="Hamburger button toggles the sidebar visibility"
             aria-label="toggle sidebar"
           >
             {isSidebarOpen ? <RiCloseLine size={24} /> : <RiMenu3Line size={18} />}
+            {isSidebarOpen ? <span className="sr-only">Close</span> : <span className="sr-only">Open</span> }
           </button>
         </div>
       </div>

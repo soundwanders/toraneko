@@ -26,6 +26,7 @@ const ThemeSwitcher: React.FC = () => {
       >
         <IconContext.Provider value={{ color: theme === 'light' ? '#39306F' : '#483D8B', className: "theme-button" }}>
           {isActive ? <HiOutlineSun size={18} /> : <HiOutlineMoon size={18} />}
+          {isActive ? <span className="sr-only">Light Mode</span> : <span className="sr-only">Dark Mode</span> }
         </IconContext.Provider>
       </button>
     </div>
