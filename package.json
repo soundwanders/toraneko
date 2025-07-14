@@ -14,6 +14,7 @@
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.480",
     "@vercel/analytics": "^1.5.0",
+    "caniuse-lite": "^1.0.30001727",
     "next": "13.5.4",
     "next-themes": "^0.2.1",
     "react": "^18",
