@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
 
       <a
         className="text-base text-gray-800 dark:text-gray-300 font-bold mr-6"
-        href="https://jcoletta.com"
+        href="https://yamabiko.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
       >

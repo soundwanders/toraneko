@@ -20,19 +20,30 @@ body {
   margin: 0;
 }
 
+/* animations */
 .slide-up-and-fade {
-  animation: slideUpAndFade 1s ease-in-out;
+  animation: slideUpAndFade 1.2s ease-out;
 }
 
 .fade-in {
-  animation: fade-in 1s ease-in-out;
+  animation: fade-in 1.5s ease-in-out;
 }
 
-/* hero container animation */
+.stagger-children > * {
+  animation: slideUpAndFade 0.8s ease-out both;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+
+/* Hero container animation - more refined */
 @keyframes slideUpAndFade {
   0% {
     opacity: 0;
-    transform: translateY(20%);
+    transform: translateY(30px);
   }
   100% {
     opacity: 1;
@@ -40,7 +51,7 @@ body {
   }
 }
 
-/* spline image animation */
+/* Spline image animation */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -50,6 +61,51 @@ body {
   }
 }
 
+/* Floating animation for background elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Gentle pulse animation */
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.gentle-pulse {
+  animation: gentle-pulse 4s ease-in-out infinite;
+}
+
+/* Shimmer effect for loading states */
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background-size: 800px 104px;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* Shape divider styles */
 .shape-divider-light,
 .shape-divider-dark {
   position: absolute;
@@ -78,9 +134,56 @@ body {
   fill: #0F172A;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #6366f1, #f16366);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #4f46e5, #dc2626);
+}
+
+/* Dark mode scrollbar */
+@media (prefers-color-scheme: dark) {
+  ::-webkit-scrollbar-track {
+    background: #1e293b;
+  }
+}
+
+/* responsive design */
 @media only screen and (max-width: 768px) { 
   html, body {
     width: 100%;
     height: 100dvh;
   }
+  
+  .hero-container {
+    min-height: 100dvh;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    .slide-up-and-fade,
+    .fade-in,
+    .float,
+    .gentle-pulse {
+      animation: none;
+    }
+  }
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
