@@ -15,24 +15,25 @@
     "@splinetool/runtime": "^0.9.480",
     "@vercel/analytics": "^1.5.0",
     "caniuse-lite": "^1.0.30001727",
-    "next": "13.5.4",
+    "next": "^15.4.1",
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-icons": "^4.11.0"
+    "react-icons": "^4.11.0",
+    "sharp": "^0.34.3"
   },
   "devDependencies": {
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
+    "@types/node": "^24.0.14",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "@typescript-eslint/eslint-plugin": "^6.7.4",
     "autoprefixer": "^10",
     "eslint": "^8.51.0",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
-    "prettier": "^3.0.3",
+    "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.5.5",
     "tailwindcss": "^3",
-    "typescript": "^5.2.2"
+    "typescript": "^5.8.3"
   }
 }
