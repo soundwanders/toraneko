@@ -17,7 +17,7 @@ export const HeroLinks: React.FC = () => {
         <span>Github</span>
       </a>
 
-      <a
+      {/* <a
         href="https://yamabiko.vercel.app"
         target="_blank"
         rel="noopener noreferrer"
@@ -27,7 +27,7 @@ export const HeroLinks: React.FC = () => {
           <FiCoffee size={18} />
         </span>
         <span>Blog</span>
-      </a>
+      </a> */}
     </nav>
   );
 };
