@@ -22,11 +22,11 @@ const Podcasts = () => {
       emoji: '🏺'
     },
     {
-      name: 'Syntax',
-      spotifyURL: 'https://open.spotify.com/show/4kYCRYJ3yK5DQbP5tbfZby',
+      name: 'LeVar Burton Reads',
+      spotifyURL: 'https://open.spotify.com/show/21yjAjzYXD1xCNDad4OdTV',
       color: theme === 'light' ? 'text-emerald-600 hover:text-emerald-700' : 'text-green-300 hover:text-green-200',
       bgColor: 'hover:bg-emerald-50 dark:hover:bg-emerald-900/10',
-      emoji: '💻'
+      emoji: '✨'
     }
   ];
 
@@ -37,11 +37,11 @@ const Podcasts = () => {
       </p>
       
       {/* Mobile: Vertical layout, Desktop: Horizontal layout */}
-      <div className="flex flex-col space-y-2 md:flex-row md:space-y-0 md:space-x-4 md:items-center">
+      <div className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center md:gap-x-5 md:gap-y-1">
         {podcasts.map((podcast, index) => (
           <div 
             key={index} 
-            className={`group flex items-center space-x-3 p-2 rounded-lg transition-all duration-200 ${podcast.bgColor} md:flex-1 md:justify-center`}
+            className={`group flex items-center gap-2 p-2 rounded-lg transition-all duration-200 ${podcast.bgColor}`}
             style={{ animationDelay: `${index * 150}ms` }}
           >
             <span className="text-lg group-hover:scale-110 transition-transform duration-200">
@@ -51,7 +51,7 @@ const Podcasts = () => {
               href={podcast.spotifyURL}
               target="_blank"
               rel="noopener noreferrer"
-              className={`text-sm ${podcast.color} transition-colors duration-200 hover:underline decoration-2 underline-offset-2 md:text-center`}
+              className={`text-sm whitespace-nowrap ${podcast.color} transition-colors duration-200 hover:underline decoration-2 underline-offset-2`}
             >
               {podcast.name}
             </a>

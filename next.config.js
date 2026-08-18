@@ -33,7 +33,7 @@ const nextConfig = {
   // Don't advertise the framework in every response.
   poweredByHeader: false,
 
-  // Next 16 writes AGENTS.md / CLAUDE.md into the repo on `next dev` unless disabled.
+  // Next 16 writes agent instruction files into the repo on `next dev` unless disabled.
   agentRules: false,
 
   images: {
