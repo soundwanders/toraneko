@@ -13,20 +13,21 @@ const ThemeSwitcher: React.FC = () => {
 
   const isActive = theme === "light";
 
-  const switchClasses = `flex items-center justify-center w-6 h-6 text-dark bg-white shadow-sm rounded-full transform 
-    transition-all duration-500 ease-in-out hover:scale-110
+  const knobClasses = `flex items-center justify-center w-6 h-6 text-dark bg-white shadow-sm rounded-full transform 
+    transition-all duration-500 ease-in-out group-hover:scale-110
     ${isActive ? '-translate-x-1' : 'translate-x-6'}`;
 
   return (
-    <div 
-      className="relative w-12 h-6 rounded-full px-1 cursor-pointer bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 transition-all duration-300 shadow-md hover:shadow-lg" 
+    // The whole pill is the button, so the full 48x24 area stays clickable and is a single
+    // focusable control. Previously the onClick sat on a div wrapping a separate button.
+    <button
+      type="button"
       onClick={toggleTheme}
+      aria-label="Switch between light and dark theme"
+      aria-pressed={isActive}
+      className="group relative w-12 h-6 rounded-full px-1 cursor-pointer bg-gradient-to-r from-slate-600 to-slate-700 hover:from-slate-500 hover:to-slate-600 transition-all duration-300 shadow-md hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
     >
-      <button 
-        className={switchClasses}
-        aria-label="toggle theme"
-        aria-describedby="switch between light and dark theme"
-      >
+      <span className={knobClasses}>
         <IconContext.Provider value={{ 
           color: theme === 'light' ? '#4338ca' : '#6366f1', 
           className: "theme-button transition-all duration-300" 
@@ -36,14 +37,10 @@ const ThemeSwitcher: React.FC = () => {
           ) : (
             <HiOutlineMoon size={16} className="animate-pulse" />
           )}
-          {isActive ? (
-            <span className="sr-only">Light Mode</span>
-          ) : (
-            <span className="sr-only">Dark Mode</span>
-          )}
         </IconContext.Provider>
-      </button>
-    </div>
+      </span>
+      <span className="sr-only">{isActive ? 'Light Mode' : 'Dark Mode'}</span>
+    </button>
   );
 };
 

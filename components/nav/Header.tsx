@@ -69,8 +69,9 @@ const Header: React.FC = () => {
           <button
             onClick={toggleSidebar}
             className="text-gray-800 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-200 dark:focus:ring-offset-slate-875 rounded p-1"
-            aria-describedby="Hamburger button toggles the sidebar visibility"
             aria-label="toggle sidebar"
+            aria-expanded={isSidebarOpen}
+            aria-controls="mobile-sidebar"
           >
             {isSidebarOpen ? <RiCloseLine size={24} /> : <RiMenu3Line size={18} />}
             {isSidebarOpen ? <span className="sr-only">Close</span> : <span className="sr-only">Open</span> }

@@ -33,7 +33,7 @@ const Podcasts = () => {
   return (
     <div className="px-1 md:px-2">
       <p className="text-sm md:text-base text-gray-700 dark:text-gray-300 mb-3 px-2">
-        <span className="pr-1">🎙️</span> I've been listening to...
+        <span className="pr-1">🎙️</span> I&apos;ve been listening to...
       </p>
       
       {/* Mobile: Vertical layout, Desktop: Horizontal layout */}

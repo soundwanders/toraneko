@@ -1,4 +1,4 @@
-export async function GET(request: Request): Promise<Response> {
+export async function GET(): Promise<Response> {
   try {
     const rssFeedURL = "https://www.goodreads.com/review/list_rss/160520358?shelf=currently-reading";
 

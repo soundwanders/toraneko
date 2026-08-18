@@ -15,7 +15,7 @@ const Subtitle: React.FC = () => {
           <span className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-salmon-600/60 to-transparent dark:from-salmon-300/60 rounded"></span>
         </span>
         
-        &nbsp;<br/>and there's
+        &nbsp;<br/>and there&apos;s
 
         <span className="relative inline-block">
           <span className="text-indigo-500 dark:text-indigo-200 font-semibold">

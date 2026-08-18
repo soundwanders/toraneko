@@ -2,38 +2,39 @@
   "name": "toraneko",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "prettier": "prettier --write \"**/*.js\"",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "prettier": "prettier --write \"**/*.{js,ts,tsx,css}\"",
     "prettier-tailwind": "prettier-plugin-tailwindcss --write \"**/*.html\""
   },
   "dependencies": {
-    "@splinetool/react-spline": "^2.2.6",
-    "@splinetool/runtime": "^0.9.480",
-    "@vercel/analytics": "^1.5.0",
-    "caniuse-lite": "^1.0.30001727",
-    "next": "^15.4.1",
-    "next-themes": "^0.2.1",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^4.11.0",
-    "sharp": "^0.34.3"
+    "@vercel/analytics": "^2.0.1",
+    "caniuse-lite": "^1.0.30001809",
+    "next": "^16.3.1",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-icons": "^5.7.0",
+    "sharp": "^0.35.3"
   },
   "devDependencies": {
-    "@types/node": "^24.0.14",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@typescript-eslint/eslint-plugin": "^6.7.4",
-    "autoprefixer": "^10",
-    "eslint": "^8.51.0",
-    "eslint-config-next": "13.5.4",
-    "postcss": "^8",
-    "prettier": "^3.6.2",
-    "prettier-plugin-tailwindcss": "^0.5.5",
-    "tailwindcss": "^3",
-    "typescript": "^5.8.3"
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "autoprefixer": "^10.5.4",
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^16.3.1",
+    "postcss": "^8.5.26",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   }
 }
