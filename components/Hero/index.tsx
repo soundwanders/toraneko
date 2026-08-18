@@ -1,7 +1,7 @@
 "use client";
 
 import React from 'react';
-import MiniRoom from '../Spline';
+import MiniRoom from '../MiniRoom';
 import HeroLinks from '../nav/HeroLinks';
 import Title from '../Intro/Title';
 import Subtitle from '../Intro/Subtitle';
@@ -32,7 +32,11 @@ const Hero: React.FC = () => {
 
       {/* Text/Content Section */}
       <div className="w-full md:w-2/5 px-8 md:px-28 md:py-4 flex items-center slide-up-and-fade relative z-10">
-        <div className="max-w-xl mx-auto md:-translate-y-36">
+        {/* The -9rem nudge tightens the composition on very wide screens, but from
+            768-1535px it lifted the <h1> clean off the top of the viewport (measured
+            top: -50px at both 1280x800 and 1440x900), hiding the site title behind the
+            header. Scoped to 2xl so wide layouts are unchanged. */}
+        <div className="max-w-xl mx-auto 2xl:-translate-y-36">
           <Title />
           <Subtitle />
           <HeroLinks />

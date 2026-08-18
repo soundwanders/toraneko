@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 // Skip Links Component (Required for WCAG)
 export const SkipLinks: React.FC = () => {
   return (

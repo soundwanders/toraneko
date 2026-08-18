@@ -5,7 +5,7 @@ import { FiGithub, FiCoffee } from 'react-icons/fi';
 
 const Sidebar: React.FC = () => {
   return (
-  <div className="md:hidden font-bold">
+  <div id="mobile-sidebar" className="md:hidden font-bold">
     <nav className={`bg-transparent p-6 mt-3`}>
       <a
         className="text-base text-gray-800 dark:text-gray-300 font-bold mr-6"

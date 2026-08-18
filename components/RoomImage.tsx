@@ -1,6 +1,6 @@
 import NextImage, { ImageProps } from 'next/image';
 
-interface SplineImageProps extends ImageProps {
+interface RoomImageProps extends ImageProps {
   src: string;
   alt: string;
   width: number;
@@ -8,7 +8,7 @@ interface SplineImageProps extends ImageProps {
   quality: number;
 }
 
-const SplineImage: React.FC<SplineImageProps> = ({ src, alt, width, height, quality }) => {
+const RoomImage: React.FC<RoomImageProps> = ({ src, alt, width, height, quality, ...rest }) => {
   return (
     <NextImage
       src={src}
@@ -16,8 +16,9 @@ const SplineImage: React.FC<SplineImageProps> = ({ src, alt, width, height, qual
       width={width}
       height={height}
       quality={quality}
+      {...rest}
     />
   );
 };
 
-export default SplineImage;
+export default RoomImage;

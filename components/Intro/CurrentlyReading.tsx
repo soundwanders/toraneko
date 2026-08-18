@@ -38,9 +38,11 @@ const CurrentlyReading = () => {
       });
   }, []);
 
-  // Define the dynamic URL of the Goodreads page for the book
+  // Define the dynamic URL of the Goodreads page for the book.
+  // encodeURIComponent is required: titles routinely contain '#' (series numbers) and '&',
+  // which would otherwise start a URL fragment / extra param and silently truncate the query.
   const goodreadsBaseURL = 'https://www.goodreads.com/search?q=';
-  const formattedBookTitle = bookTitle ? bookTitle.replace(/\s+/g, '+') : '';
+  const formattedBookTitle = bookTitle ? encodeURIComponent(bookTitle) : '';
 
   if (isLoading) {
     return (
