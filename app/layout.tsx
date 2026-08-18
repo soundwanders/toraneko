@@ -8,7 +8,10 @@ import ThemeProvider from './provider';
 
 const outfit = Outfit({ subsets: ['latin'] });
 
-const siteURL = 'https://soundwanders.com';
+// www is the canonical host: it serves Production on Vercel, while the apex
+// 308-redirects to it. Canonical/OG URLs must point at the host that actually
+// serves, not at one that redirects.
+const siteURL = 'https://www.soundwanders.com';
 const title = 'soundwanders ᓚᘏᗢ';
 const description = 'Drifting through the digital constellations of web design and development.';
 
