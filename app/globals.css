@@ -187,3 +187,99 @@ body {
   outline-offset: 2px;
   border-radius: 4px;
 }
+/* ---------------------------------------------------------------------------
+   The desk lamp in the mini room is the theme switch.
+
+   The glow is not an effect layered onto the picture; it is the lamp doing the
+   job a lamp does. So it burns in dark mode and sits cold in daylight, and
+   clicking it reads the way clicking a real lamp at dusk reads: the room goes
+   dark around it and the lamp comes on. The header toggle stays the discoverable
+   control — this one is only ever a thing you find.
+
+   Positioned in percentages so it stays registered to the shade at any render
+   size, and it lives inside .miniroom-tilt so it tilts with the room.
+--------------------------------------------------------------------------- */
+
+.lamp-switch {
+  position: absolute;
+  /* Fractions of the room image: the lamp shade sits at x 54-63%, y 34-44%. */
+  left: 53%;
+  top: 32.5%;
+  width: 11%;
+  height: 14%;
+  border-radius: 40% 40% 30% 30%;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.lamp-switch:focus-visible {
+  outline: 2px solid rgba(255, 193, 112, .9);
+  outline-offset: 3px;
+}
+
+.lamp-glow {
+  position: absolute;
+  /* Sized and placed against the artwork: the pool centres just below the shade
+     and reaches the desk, the laptop and the person at it, and stops there. An
+     earlier pass had it four times this wide, which lit the window and the far
+     wall too — a desk lamp that illuminates the whole room stops reading as a
+     desk lamp and starts reading as a filter over the picture. */
+  left: 50%;
+  top: 92%;
+  width: 250%;
+  height: 260%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 226, 173, .60) 0%,
+    rgba(255, 195, 116, .30) 40%,
+    rgba(255, 168, 88, .11) 66%,
+    transparent 79%
+  );
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+/* The lit shade itself, tighter and warmer than the pool it throws. */
+.lamp-glow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 32%;
+  width: 24%;
+  height: 22%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 243, 214, .75), transparent 75%);
+}
+
+/* Daylight: unlit. Hover lifts it just far enough to say the object is live —
+   this is the only hint, and a cursor change is the rest of it. */
+.lamp-switch:hover .lamp-glow,
+.lamp-switch:focus-visible .lamp-glow {
+  opacity: .42;
+}
+
+.dark .lamp-glow {
+  opacity: 1;
+}
+
+.dark .lamp-switch:hover .lamp-glow,
+.dark .lamp-switch:focus-visible .lamp-glow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp-glow {
+    transition: none;
+  }
+  .dark .lamp-switch:hover .lamp-glow,
+  .dark .lamp-switch:focus-visible .lamp-glow {
+    transform: translate(-50%, -50%);
+  }
+}

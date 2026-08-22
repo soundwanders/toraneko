@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useCallback, useEffect, useRef } from 'react';
+import { useTheme } from 'next-themes';
 import RoomImage from './RoomImage';
 
 // How far the room is allowed to tilt, in degrees.
@@ -19,6 +20,7 @@ const MAX_TILT_DEG = 7;
 const EASING = 0.09;
 
 const MiniRoom: React.FC = () => {
+  const { resolvedTheme, setTheme } = useTheme();
   const frameRef = useRef<HTMLDivElement>(null);
   const target = useRef({ x: 0, y: 0 });
   const current = useRef({ x: 0, y: 0 });
@@ -80,6 +82,13 @@ const MiniRoom: React.FC = () => {
     startRef.current();
   }, []);
 
+  // The lamp is a real switch for the room's light, which here is the site's light.
+  // `resolvedTheme` rather than `theme` so a visitor on the system default flips to
+  // the opposite of what they are actually looking at, not the opposite of "system".
+  const toggleLamp = useCallback(() => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  }, [resolvedTheme, setTheme]);
+
   const handlePointerLeave = useCallback(() => {
     target.current = { x: 0, y: 0 };
     startRef.current();
@@ -93,7 +102,7 @@ const MiniRoom: React.FC = () => {
     >
       <div
         ref={frameRef}
-        className="miniroom-tilt will-change-transform [transform-style:preserve-3d]"
+        className="miniroom-tilt relative will-change-transform [transform-style:preserve-3d]"
       >
         <RoomImage
           src="/miniroom.png"
@@ -109,6 +118,19 @@ const MiniRoom: React.FC = () => {
           onDragStart={(e) => e.preventDefault()}
           className="select-none [-webkit-user-drag:none] [-webkit-touch-callout:none]"
         />
+
+        {/* The label is static in both states on purpose: it has to be right on the
+            server too, and next-themes only knows the real theme after hydration.
+            It is also the one place the secret is spelled out, which is the correct
+            trade — a screen reader user cannot see a lamp glow or a cursor change. */}
+        <button
+          type="button"
+          onClick={toggleLamp}
+          aria-label="Desk lamp: switch between the light and dark theme"
+          className="lamp-switch"
+        >
+          <span className="lamp-glow" />
+        </button>
       </div>
     </div>
   );
