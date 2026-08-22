@@ -11,13 +11,24 @@ import RoomImage from './RoomImage';
 // ~149 kB, and because its orbit could swing far enough to expose the flat,
 // unmodelled back walls. Clamping to a small angle here means that second problem
 // cannot happen at all: there is no camera, just a bounded transform.
-const MAX_TILT_DEG = 7;
+const MAX_TILT_DEG = 5;
 
-// Fraction of the remaining distance closed each frame. The first version used a CSS
-// `transition-transform`, which restarted on every single pointermove and so never
-// finished — that is what made it feel janky and abrupt. Easing toward a target in a
-// rAF loop instead means the room trails the cursor smoothly and always settles.
-const EASING = 0.09;
+// How long the room takes to close ~63% of the distance to the cursor.
+//
+// The first version used a CSS `transition-transform`, which restarted on every single
+// pointermove and so never finished — that is what made it feel janky and abrupt.
+// Easing toward a target in a rAF loop fixed that, but eased by a fixed fraction *per
+// frame*, which has two problems: the feel depended on the display (9%/frame is a 177ms
+// time constant at 60Hz and 88ms at 120Hz), and 177ms of lag across a 14deg swing is
+// enough that a fast sweep reads as the room sloshing after the cursor rather than
+// following it. Easing against elapsed time instead makes the response identical on
+// every display, and 110ms tracks closely enough to kill the slosh while still visibly
+// trailing the cursor.
+const TAU_MS = 110;
+
+// Longest frame we'll integrate in one step. Without this, returning to a backgrounded
+// tab hands us a multi-second dt, which closes the full distance instantly and snaps.
+const MAX_FRAME_MS = 50;
 
 const MiniRoom: React.FC = () => {
   const { resolvedTheme, setTheme } = useTheme();
@@ -41,11 +52,20 @@ const MiniRoom: React.FC = () => {
   // react-hooks/immutability flags). Everything it touches is a ref, so it never
   // needs rebuilding.
   useEffect(() => {
-    const step = () => {
+    let last = 0;
+
+    const step = (now: number) => {
+      // First frame of a run has no previous timestamp to measure against.
+      const dt = last ? Math.min(now - last, MAX_FRAME_MS) : 1000 / 60;
+      last = now;
+
       const t = target.current;
       const c = current.current;
-      c.x += (t.x - c.x) * EASING;
-      c.y += (t.y - c.y) * EASING;
+      // Exponential approach, normalised to elapsed time so the curve is the same
+      // whatever the refresh rate.
+      const k = 1 - Math.exp(-dt / TAU_MS);
+      c.x += (t.x - c.x) * k;
+      c.y += (t.y - c.y) * k;
 
       const settled = Math.abs(t.x - c.x) < 0.02 && Math.abs(t.y - c.y) < 0.02;
       if (settled) {
@@ -57,7 +77,12 @@ const MiniRoom: React.FC = () => {
       if (el) el.style.transform = `rotateX(${c.x.toFixed(3)}deg) rotateY(${c.y.toFixed(3)}deg)`;
 
       // Idle once we've arrived; the next pointermove restarts the loop.
-      rafRef.current = settled ? null : requestAnimationFrame(step);
+      if (settled) {
+        rafRef.current = null;
+        last = 0;
+      } else {
+        rafRef.current = requestAnimationFrame(step);
+      }
     };
 
     startRef.current = () => {

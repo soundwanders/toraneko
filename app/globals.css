@@ -11,13 +11,20 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 15, 23, 42;
-    --background-end-rgb: 15, 23, 42;
+    --background-start-rgb: 10, 17, 34;
+    --background-end-rgb: 10, 17, 34;
   }
 }
 
 body {
   margin: 0;
+}
+
+/* The hero paints its own background image, but the body behind it had none, so
+   overscroll bounce and anything past the hero fell through to the browser's white.
+   Only the dark case is set here; light mode was already correct against white. */
+.dark body {
+  background-color: #0a1122;
 }
 
 /* animations */
@@ -131,7 +138,7 @@ body {
 }
 
 .shape-divider-dark .shape-fill {
-  fill: #0F172A;
+  fill: #0a1122;
 }
 
 /* Custom scrollbar */
@@ -202,12 +209,16 @@ body {
 
 .lamp-switch {
   position: absolute;
-  /* Fractions of the room image: the lamp shade sits at x 54-63%, y 34-44%. */
-  left: 53%;
-  top: 32.5%;
-  width: 11%;
-  height: 14%;
-  border-radius: 40% 40% 30% 30%;
+  /* Fractions of the room image. The shade itself is x 54-62%, y 34-44%; the target is
+     deliberately ~1.8x that, wrapping the shade and the top of the stem, so the pointer
+     is caught before you are precisely on the lamp. The top edge stops just short of the
+     vinyl record above it — overlapping that would put a pointer cursor on a record that
+     does nothing. */
+  left: 51%;
+  top: 31.8%;
+  width: 15%;
+  height: 18.5%;
+  border-radius: 38% 38% 30% 30%;
   cursor: pointer;
   background: none;
   border: 0;
@@ -227,9 +238,9 @@ body {
      wall too — a desk lamp that illuminates the whole room stops reading as a
      desk lamp and starts reading as a filter over the picture. */
   left: 50%;
-  top: 92%;
-  width: 250%;
-  height: 260%;
+  top: 60%;
+  width: 184%;
+  height: 195%;
   transform: translate(-50%, -50%);
   border-radius: 50%;
   pointer-events: none;
@@ -249,7 +260,7 @@ body {
   content: "";
   position: absolute;
   left: 50%;
-  top: 32%;
+  top: 38%;
   width: 24%;
   height: 22%;
   transform: translate(-50%, -50%);
