@@ -19,8 +19,11 @@ const Subtitle: React.FC = () => {
         </span>
 
         {/* The caveat is the joke, and the joke lands quieter: italic and a shade
-            back from the rest of the line rather than a second bold accent. */}
-        <span className="italic text-gray-500 dark:text-gray-400">
+            back from the rest of the line rather than a second bold accent. gray-600
+            rather than gray-500 because the cream ground costs about 0.4 of contrast
+            and 500 fell to 4.02:1 — under AA for text this size. 600 is still lighter
+            than the gray-700 body text, so it stays subordinate, which is the point. */}
+        <span className="italic text-gray-600 dark:text-gray-400">
           , as circumstances permit.
         </span>
 

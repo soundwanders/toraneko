@@ -13,7 +13,7 @@ const ThemeSwitcher: React.FC = () => {
 
   const isActive = theme === "light";
 
-  const knobClasses = `flex items-center justify-center w-6 h-6 text-dark bg-white shadow-sm rounded-full transform 
+  const knobClasses = `flex items-center justify-center w-6 h-6 text-dark bg-cream-50 dark:bg-white shadow-sm rounded-full transform 
     transition-all duration-500 ease-in-out group-hover:scale-110
     ${isActive ? '-translate-x-1' : 'translate-x-6'}`;
 
