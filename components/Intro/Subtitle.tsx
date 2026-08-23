@@ -23,7 +23,7 @@ const Subtitle: React.FC = () => {
             rather than gray-500 because the cream ground costs about 0.4 of contrast
             and 500 fell to 4.02:1 — under AA for text this size. 600 is still lighter
             than the gray-700 body text, so it stays subordinate, which is the point. */}
-        <span className="italic text-gray-600 dark:text-gray-400">
+        <span className="italic text-gray-800 dark:text-gray-200">
           , as circumstances permit.
         </span>
 
