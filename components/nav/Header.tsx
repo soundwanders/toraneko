@@ -29,12 +29,12 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header className="bg-gray-200 dark:bg-slate-875 p-4">
+    <header className="bg-cream-300 dark:bg-slate-875 border-b border-cream-400 dark:border-transparent p-4">
       <div className="container-xl mx-auto flex justify-between items-center px-6 md:px-24">
         <div className="font-bold py-1">
           <Link 
             href="/" 
-            className="ghost-container inline-block relative group outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-200 dark:focus-visible:ring-offset-slate-875 rounded-lg p-1"
+            className="ghost-container inline-block relative group outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 focus-visible:ring-offset-cream-300 dark:focus-visible:ring-offset-slate-875 rounded-lg p-1"
             onClick={handleGhostClick}
             aria-label="Home - Click for a spooky surprise!"
             style={{ border: 'none', outline: 'none' }}

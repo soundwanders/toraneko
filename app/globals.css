@@ -4,20 +4,31 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 255, 255, 255;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 239, 234, 217;
+  --background-end-rgb: 239, 234, 217;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 15, 23, 42;
-    --background-end-rgb: 15, 23, 42;
+    --background-start-rgb: 10, 17, 34;
+    --background-end-rgb: 10, 17, 34;
   }
 }
 
 body {
   margin: 0;
+}
+
+/* The hero paints its own background image, but the body behind it has none, so
+   overscroll bounce and anything past the hero falls through to the browser default.
+   Both grounds are painted here so neither theme leaks white at the edges. */
+body {
+  background-color: #efead9;
+}
+
+.dark body {
+  background-color: #0a1122;
 }
 
 /* animations */
@@ -100,7 +111,7 @@ body {
 }
 
 .shimmer {
-  background: linear-gradient(to right, #f6f7f8 8%, #edeef1 18%, #f6f7f8 33%);
+  background: linear-gradient(to right, #f7f3e7 8%, #e7e1ce 18%, #f7f3e7 33%);
   background-size: 800px 104px;
   animation: shimmer 1.5s ease-in-out infinite;
 }
@@ -127,11 +138,11 @@ body {
 }
 
 .shape-divider-light .shape-fill {
-  fill: #f5f5f5;
+  fill: #efead9;
 }
 
 .shape-divider-dark .shape-fill {
-  fill: #0F172A;
+  fill: #0a1122;
 }
 
 /* Custom scrollbar */
@@ -140,7 +151,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #e7e1ce;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -186,4 +197,104 @@ body {
   outline: 2px solid #6366f1;
   outline-offset: 2px;
   border-radius: 4px;
+}
+/* ---------------------------------------------------------------------------
+   The desk lamp in the mini room is the theme switch.
+
+   The glow is not an effect layered onto the picture; it is the lamp doing the
+   job a lamp does. So it burns in dark mode and sits cold in daylight, and
+   clicking it reads the way clicking a real lamp at dusk reads: the room goes
+   dark around it and the lamp comes on. The header toggle stays the discoverable
+   control — this one is only ever a thing you find.
+
+   Positioned in percentages so it stays registered to the shade at any render
+   size, and it lives inside .miniroom-tilt so it tilts with the room.
+--------------------------------------------------------------------------- */
+
+.lamp-switch {
+  position: absolute;
+  /* Fractions of the room image. The shade itself is x 54-62%, y 34-44%; the target is
+     deliberately ~1.8x that, wrapping the shade and the top of the stem, so the pointer
+     is caught before you are precisely on the lamp. The top edge stops just short of the
+     vinyl record above it — overlapping that would put a pointer cursor on a record that
+     does nothing. */
+  left: 51%;
+  top: 31.8%;
+  width: 15%;
+  height: 18.5%;
+  border-radius: 38% 38% 30% 30%;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
+.lamp-switch:focus-visible {
+  outline: 2px solid rgba(255, 193, 112, .9);
+  outline-offset: 3px;
+}
+
+.lamp-glow {
+  position: absolute;
+  /* Sized and placed against the artwork: the pool centres just below the shade
+     and reaches the desk, the laptop and the person at it, and stops there. An
+     earlier pass had it four times this wide, which lit the window and the far
+     wall too — a desk lamp that illuminates the whole room stops reading as a
+     desk lamp and starts reading as a filter over the picture. */
+  left: 50%;
+  top: 60%;
+  width: 184%;
+  height: 195%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  background: radial-gradient(
+    closest-side,
+    rgba(255, 226, 173, .60) 0%,
+    rgba(255, 195, 116, .30) 40%,
+    rgba(255, 168, 88, .11) 66%,
+    transparent 79%
+  );
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+/* The lit shade itself, tighter and warmer than the pool it throws. */
+.lamp-glow::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 38%;
+  width: 24%;
+  height: 22%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 243, 214, .75), transparent 75%);
+}
+
+/* Daylight: unlit. Hover lifts it just far enough to say the object is live —
+   this is the only hint, and a cursor change is the rest of it. */
+.lamp-switch:hover .lamp-glow,
+.lamp-switch:focus-visible .lamp-glow {
+  opacity: .42;
+}
+
+.dark .lamp-glow {
+  opacity: 1;
+}
+
+.dark .lamp-switch:hover .lamp-glow,
+.dark .lamp-switch:focus-visible .lamp-glow {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lamp-glow {
+    transition: none;
+  }
+  .dark .lamp-switch:hover .lamp-glow,
+  .dark .lamp-switch:focus-visible .lamp-glow {
+    transform: translate(-50%, -50%);
+  }
 }
