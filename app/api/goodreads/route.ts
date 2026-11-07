@@ -2,12 +2,12 @@
 // shelf list pages redirect anonymous visitors to sign-in. The public profile page still
 // renders a "Currently Reading" box, so we read the book from there instead.
 //
-// This route is revalidated hourly, which means one upstream request per hour for the
-// whole site regardless of traffic, and the CDN keeps serving the cached body (plus a day
-// of stale-while-revalidate) in between.
+// This route is revalidated daily, which means at most one upstream request per day for
+// the whole site regardless of traffic, and the CDN keeps serving the cached body (plus a
+// day of stale-while-revalidate) in between. A new book can take up to a day to show up.
 // Next only accepts a literal here — it reads this statically, so it cannot be a
 // reference to another const.
-export const revalidate = 3600;
+export const revalidate = 86400;
 
 // If Goodreads hangs, fail fast rather than holding a serverless function open.
 const UPSTREAM_TIMEOUT_MS = 5000;
