@@ -1,48 +1,36 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import type { CurrentlyReadingResponse } from '@/app/api/goodreads/route';
+
+type Book = NonNullable<CurrentlyReadingResponse['book']>;
 
 const CurrentlyReading = () => {
-  const [bookTitle, setBookTitle] = useState<string | null>(null);
+  const [book, setBook] = useState<Book | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Fetch data from goodreads API route
     fetch('/api/goodreads')
-      .then((response) => response.text())
-      .then((xml) => {
-        // Handle parsing of the received XML data
-        try {
-          const parser = new DOMParser();
-          const xmlDoc = parser.parseFromString(xml, 'text/xml');
-          const items = xmlDoc.getElementsByTagName('item');
-          if (items.length > 0) {
-            const firstItem = items[0];
-            const title = firstItem.querySelector('title')?.textContent ?? null;
-            setBookTitle(title);
-          } else {
-            setError('No items found in the RSS feed.');
-          }
-        } catch (err) {
-          console.error('Error parsing RSS feed:', err);
-          setError('Error parsing RSS feed.');
+      .then((response) => {
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+        return response.json() as Promise<CurrentlyReadingResponse>;
+      })
+      .then(({ book }) => {
+        if (book) {
+          setBook(book);
+        } else {
+          setError('Nothing on the currently-reading shelf.');
         }
       })
       .catch((error) => {
-        console.error('Error fetching RSS feed:', error);
-        setError('Error fetching RSS feed.');
+        console.error('Error fetching currently reading:', error);
+        setError('Error fetching currently reading.');
       })
       .finally(() => {
         setIsLoading(false);
       });
   }, []);
-
-  // Define the dynamic URL of the Goodreads page for the book.
-  // encodeURIComponent is required: titles routinely contain '#' (series numbers) and '&',
-  // which would otherwise start a URL fragment / extra param and silently truncate the query.
-  const goodreadsBaseURL = 'https://www.goodreads.com/search?q=';
-  const formattedBookTitle = bookTitle ? encodeURIComponent(bookTitle) : '';
 
   if (isLoading) {
     return (
@@ -67,17 +55,17 @@ const CurrentlyReading = () => {
           </span>
         </div>
       ) : (
-        bookTitle ? (
+        book ? (
           <div className="group p-3 rounded-lg bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/10 dark:to-purple-900/10 border border-indigo-200/50 dark:border-indigo-700/30 hover:shadow-md transition-all duration-200">
             <p className="text-sm md:text-base text-gray-700 dark:text-gray-300">
               <span className="pr-2">📖</span> Currently reading &nbsp;
               <a 
                 className="text-indigo-700 dark:text-indigo-300 italic hover:text-indigo-800 dark:hover:text-indigo-200 transition-colors duration-200 hover:underline decoration-2 underline-offset-2" 
-                href={`${goodreadsBaseURL}${formattedBookTitle}`} 
+                href={book.url}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
-                {bookTitle}
+                {book.title}
               </a>
             </p>
           </div>
